@@ -1,0 +1,30 @@
+"use strict";
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
+const Schema = use("Schema");
+
+class BookingSchema extends Schema {
+  up() {
+    this.create("bookings", (table) => {
+      table.increments();
+      table.integer("customer_id").unsigned();
+      table.integer("movie_showing_time_id").unsigned();
+      table.dateTime("booking_made_date").comment("Cuando se ha realizado");
+      table
+        .integer("booking_seat_count")
+        .comment("Numero de asientos reservados");
+      table.timestamps();
+
+      table.foreign("customer_id").references("customers.id");
+      table
+        .foreign("movie_showing_time_id")
+        .references("movie_showing_times.id");
+    });
+  }
+
+  down() {
+    this.drop("bookings");
+  }
+}
+
+module.exports = BookingSchema;
