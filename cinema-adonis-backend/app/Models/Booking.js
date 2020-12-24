@@ -4,7 +4,7 @@
 const Model = use("Model");
 
 class Booking extends Model {
-  sats() {
+  seats() {
     return this.hasMany("App/Models/Seat");
   }
 

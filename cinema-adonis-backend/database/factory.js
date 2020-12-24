@@ -53,7 +53,7 @@ Factory.blueprint("App/Models/Room", async (faker, i, data) => {
   return {
     cinema_id: data.cinema_id,
     rows: rows,
-    seats: rows * 10, //then seats for each row
+    seat: rows * 10, //then seats for each row
     number: faker.integer({ min: 1, max: 20 }),
     created_at: faker.date(),
   };
