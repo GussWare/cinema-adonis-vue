@@ -26,7 +26,7 @@ Route.group(() => {
   Route.get("cinemas", "CinemaController.findAll");
   Route.get("cinemas/:id", "CinemaController.findById");
 
-  Route.get("genres", "GenresController.findAll");
+  Route.get("genres", "GenreController.findAll");
   Route.get("movies/:cinemaId/by-cinema", "MoviesController.findMovieByCinema");
   Route.get("movies/:id", "MoviesController.findById");
 

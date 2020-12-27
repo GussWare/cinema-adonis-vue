@@ -6,6 +6,8 @@ const Hash = use("Hash");
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use("Model");
 
+const CustomerModel = use("App/Models/Customer");
+
 class User extends Model {
   static boot() {
     super.boot();
@@ -18,6 +20,11 @@ class User extends Model {
       if (userInstance.dirty.password) {
         userInstance.password = await Hash.make(userInstance.password);
       }
+    });
+
+    this.addHook("afterCreate", async (userInstance) => {
+      let customer = new CustomerModel();
+      userInstance.customer().save(customer);
     });
   }
 

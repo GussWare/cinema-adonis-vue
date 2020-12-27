@@ -12,8 +12,8 @@ class MovieShowing extends Model {
     return this.belongsTo("App/Models/Room");
   }
 
-  movies() {
-    return this.hasMany("App/Models/Movie");
+  movie() {
+    return this.belongsTo("App/Models/Movie");
   }
 
   movie_showing_times() {
